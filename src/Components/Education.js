@@ -19,6 +19,7 @@ class Education extends Component {
     return(
       <MainWrapper>
         <Grid container direction={"column"} spacing={4} align = "center" justify = "center" alignItems = "center">
+        <Header>
           <Grid container direction={"row"} spacing={0} align = "center" justify = "center" alignItems = "center">
             <Grid item>
               <Typography variant="h6" component="h2">
@@ -26,12 +27,13 @@ class Education extends Component {
               </Typography>
             </Grid>
             <Grid item>
-              <IconButton name="clicked"  onClick={handleAdd}>
+              <IconButton onClick={handleAdd}>
                 <AddCircleIcon />
               </IconButton>
             </Grid>
-          </Grid>
 
+          </Grid>
+          </Header>
           <Grid container direction={"row"} spacing={0} align = "center" justify = "center" alignItems = "center">
             {
               clicked ? <EducationInput handleEduChange={handleEduChange} /> : null
@@ -50,4 +52,7 @@ const MainWrapper = styled.main`
   display: flex;
   margin: 1.5rem;
   margin-top: 3rem;
+`
+const Header = styled.div`
+  margin: 0.9rem;
 `

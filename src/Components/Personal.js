@@ -16,7 +16,7 @@ class Personal extends Component {
     return(
       <MainWrapper>
       <div>
-        <Grid container direction={"column"} spacing={3} align = "center" justify = "center" alignItems = "center">
+        <Grid container direction={"column"} spacing={4} align = "center" justify = "center" alignItems = "center">
           <Grid item>
             <Typography variant="h4" component="h2">
               Create a Tech Resume

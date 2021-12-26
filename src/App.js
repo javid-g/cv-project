@@ -3,6 +3,7 @@ import PreviewPersonal from './Components/Preview/PreviewPersonal.js';
 import PreviewEducation from './Components/Preview/PreviewEducation.js';
 import Personal from './Components/Personal.js';
 import Education from './Components/Education.js';
+import Experience from './Components/Experience.js';
 import styled from 'styled-components';
 import update from 'immutability-helper';
 import { Backdrop } from '@mui/material';
@@ -29,14 +30,21 @@ class App extends Component {
         startDate: '',
         endDate: '',
       },
-      educations: [],
+      experience: {
+        clicked: 0,
+        position: '',
+        company: '',
+        start: '',
+        end: '',
+        achievements: '',
+      },
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleEduChange = this.handleEduChange.bind(this);
-
+    this.handleExp = this.handleExp.bind(this);
   }
 
   handleChange(event) {
@@ -49,9 +57,17 @@ class App extends Component {
   }
 
   handleEduChange(event) {
-    console.log(event.target.value, event.target.name)
     const newState = update(this.state, {
       education: {
+        [event.target.name] : {$set: event.target.value},
+      }
+    })
+    this.setState(newState);
+  }
+
+  handleExpChange(event) {
+    const newState = update(this.state, {
+      experience: {
         [event.target.name] : {$set: event.target.value},
       }
     })
@@ -61,7 +77,6 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
   }
-
 
   handleAdd(event) {
     const newState = update(this.state, {
@@ -73,9 +88,19 @@ class App extends Component {
     this.setState(newState);
   }
 
+  handleExp(event) {
+    const newState = update(this.state, {
+      experience: {
+        clicked : {$set: this.state.experience.clicked + 1},
+      }
+    })
+
+    this.setState(newState);
+  }
+
   render() {
-    const { personal, education } = this.state;
-    const { handleChange, handleEduChange, handleSubmit, handleAdd } = this;
+    const { personal, education, experience } = this.state;
+    const { handleChange, handleEduChange, handleSubmit, handleAdd, handleExp, handleExpChange } = this;
 
     return(
       <div>
@@ -93,11 +118,13 @@ class App extends Component {
               handleSubmit={handleSubmit}
               handleAdd={handleAdd}
               clicked={education.clicked}
-              university={education.university}
-              location={education.area}
-              program={education.program}
-              startDate={education.startDate}
-              endDate={education.endDate}
+            />
+          <Experience
+              handleChange={handleChange}
+              handleExpChange={handleExpChange}
+              handleSubmit={handleSubmit}
+              handleExp={handleExp}
+              clicked={experience.clicked}
             />
           </form>
         </MainWrapper>
@@ -150,11 +177,11 @@ const PreviewWrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   gap: 4rem;
-  max-width: 1800px;
+
   padding: 4rem 8rem;
   margin: 0 auto;
   margin-bottom: 4rem;
-  @media (max-width: 1600px) {
+  @media (max-width: 2600px) {
     flex-direction: column;
     align-items: center;
   }

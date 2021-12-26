@@ -7,14 +7,13 @@ import { IconButton } from '@mui/material';
 import { Button } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-class EducationInput extends Component {
+class ExperienceInput extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { handleChange, handleEduChange, handleSubmit, handleAdd, handleMultipleAdd } = this.props;
-
+    const { handleChange, handleExpChange, handleSubmit, handleAdd, handleMultipleAdd } = this.props;
 
         return (
             <div id="results" className="search-results">
@@ -24,38 +23,27 @@ class EducationInput extends Component {
                   <TextField
                       required
                       id="standard-required"
-                      label="University"
+                      label="Position"
                       variant="standard"
-                      name="university"
+                      name="position"
                       type="text"
-                      placeholder="University of Learning"
-                      onChange={handleEduChange}
+                      placeholder="Developer"
+                      onChange={handleExpChange}
                       />
                   </Grid>
                   <Grid item>
                     <TextField
                         required
                         id="standard-required"
-                        label="Location"
+                        label="Company"
                         variant="standard"
-                        name="area"
+                        name="company"
                         type="text"
-                        placeholder="City, State"
-                        onChange={handleEduChange}
+                        placeholder="Facebook"
+                        onChange={handleExpChange}
                       />
                   </Grid>
-                  <Grid item>
-                    <TextField
-                        required
-                        id="standard-required"
-                        label="Program"
-                        variant="standard"
-                        name="program"
-                        type="text"
-                        placeholder="Computer Science"
-                        onChange={handleEduChange}
-                      />
-                  </Grid>
+
                 </Grid>
                 <Grid container direction={"row"} spacing={2} align = "center" justify = "center" alignItems = "center">
                   <Grid item>
@@ -64,10 +52,10 @@ class EducationInput extends Component {
                         id="standard-required"
                         label="Start Date"
                         variant="standard"
-                        name="startDate"
+                        name="start"
                         type="text"
-                        placeholder="Computer Science"
-                        onChange={handleEduChange}
+                        placeholder="Sep, 2020"
+                        onChange={handleExpChange}
                       />
                   </Grid>
                   <Grid item>
@@ -76,11 +64,25 @@ class EducationInput extends Component {
                         id="standard-required"
                         label="End Date"
                         variant="standard"
-                        name="endDate"
+                        name="end"
                         type="text"
-                        placeholder="Computer Science"
-                        onChange={handleEduChange}
+                        placeholder="Sep, 2025"
+                        onChange={handleExpChange}
                       />
+                  </Grid>
+                  <Grid container direction={"row"} spacing={2} align = "center" justify = "center" alignItems = "center">
+                  <Grid item>
+                    <TextField
+                        required
+                        id="standard-required"
+                        label="Responsibilities"
+                        variant="standard"
+                        name="achievements"
+                        type="text"
+                        placeholder="~ ~ ~"
+                        onChange={handleExpChange}
+                      />
+                  </Grid>
                   </Grid>
                   </Grid>
                   <DivWrapper>
@@ -97,7 +99,7 @@ class EducationInput extends Component {
       }
 
 
-export default EducationInput;
+export default ExperienceInput;
 
 const DivWrapper = styled.div`
   display: flex;

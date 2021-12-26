@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Typography } from '@mui/material';
 import styled from 'styled-components';
+import { Grid } from '@material-ui/core';
 
 class PreviewPersonal extends Component {
   constructor(props) {
@@ -12,22 +13,26 @@ class PreviewPersonal extends Component {
     const line1 = phoneNum && email ? "/" : "";
     const line2 = email && linkedIn ? "/" : "";
     const line3 = linkedIn && gitHub ? "/" : "";
+    const lineDiv = firstName || lastName;
 
     return(
       <Wrapper>
-      <div>
+      <Grid container direction={"column"} spacing={40} align = "center" justify = "center" alignItems = "center">
         <StyledHeader>
-          <Typography variant="h4" component="h2">
+          <Typography variant="h3" component="h2">
             {firstName} {lastName}
           </Typography>
         </StyledHeader>
         <StyledInfo>
-        <Typography variant="h6" component="h2">
-          {phoneNum} {line1} {email} {line2} {linkedIn} {line3} {gitHub}
-        </Typography>
+        <Grid item xs={12} style={{paddingLeft: 0, paddingRight: 0}}>
+          <Typography variant="h6" component="h2">
+            {phoneNum} {line1} {email} {line2} {linkedIn} {line3} {gitHub}
+            {lineDiv ? (<Line></Line>) : null}
+          </Typography>
+        </Grid>
         </StyledInfo>
-        <Line></Line>
-      </div>
+
+      </Grid>
       </Wrapper>
     );
   }
